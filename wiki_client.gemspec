@@ -1,5 +1,9 @@
-require_relative "lib/wiki_client/version"
+$:.push File.expand_path("../lib", __FILE__)
 
+# Maintain your gem's version:
+require "wiki_client/version"
+
+# Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
   spec.name = "wiki_client"
   spec.version = WikiClient::VERSION
@@ -9,23 +13,16 @@ Gem::Specification.new do |spec|
   spec.summary = "Wiki client."
   spec.description = "Wiki is nice and clean."
   spec.homepage = "https://github.com/croucherfoundation/wiki_client"
-  spec.required_ruby_version = ">= 2.6.0"
 
-  spec.metadata["allowed_push_host"] = spec.homepage
+  spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = spec.homepage
-  spec.metadata["changelog_uri"] = spec.homepage
+  spec.add_dependency "rails", "~> 6.1"
+  spec.add_dependency "paginated_her"
+  spec.add_dependency "faraday"
+  spec.add_dependency "faraday_middleware"
+  spec.add_dependency "request_store"
+  spec.add_dependency "iso_country_codes"
 
-  spec.files = Dir.chdir(__dir__) do
-    `git ls-files -z`.split("\x0").reject do |f|
-      (File.expand_path(f) == __FILE__) ||
-        f.start_with?(*%w[bin/ test/ spec/ features/ .git .circleci appveyor Gemfile])
-    end
-  end
-  spec.bindir = "exe"
-  spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
-  
-  spec.add_dependency 'httparty', '~> 0.19'
+  spec.add_development_dependency "sqlite3"
 end
+
