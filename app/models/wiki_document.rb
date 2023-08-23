@@ -8,6 +8,10 @@ class WikiDocument
     def reindex_document(id)
       response = get("#{collection_path}/reindex", { id: id })
     end
+
+    def deindex_document(url)
+      response = get("#{collection_path}/deindex", { url: url })
+    end
   end
 
 end
