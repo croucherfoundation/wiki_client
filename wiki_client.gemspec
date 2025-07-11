@@ -16,13 +16,12 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  spec.add_dependency "rails", "~> 6.1"
+  spec.add_dependency "rails"
   spec.add_dependency "paginated_her"
   spec.add_dependency "faraday"
-  spec.add_dependency "faraday_middleware"
+  # spec.add_dependency "faraday_middleware"
   spec.add_dependency "request_store"
   spec.add_dependency "iso_country_codes"
 
   spec.add_development_dependency "sqlite3"
 end
-
